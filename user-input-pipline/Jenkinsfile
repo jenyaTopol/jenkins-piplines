@@ -1,0 +1,33 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage("Interactive_Input") {
+            steps {
+                script {
+
+                   
+
+                    // Get the input
+                    def userInput = input(
+                            id: 'userInput', message: 'Enter test:',
+                            parameters: [
+                              
+                                    string(defaultValue: 'None',
+                                            description: 'Test Info file',
+                                            name: 'Test'),
+                            ])
+
+                   
+                    inputTest = userInput?:''
+
+                    // Echo to consol
+                    echo("Input-Test-Veriable: ${inputTest}")
+
+                  
+            }
+        }
+    }
+}
