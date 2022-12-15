@@ -1,7 +1,7 @@
 //created by jenya
 
 
-##CI
+//CI
 pipeline{
 
 	agent any
@@ -15,14 +15,14 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				git 'https://github.com/jenyaTopol/npm-demo-app.git'
+				git 'https://github.com/jenyaTopol/myGithubRepo.git'
 			}
 		}
 
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t jenyatopol/mynodejsapp:latest .'
+				sh 'docker build -t myDockerHub/myRepo:latest .'
 			}
 		}
 
@@ -36,11 +36,11 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push jenyatopol/mynodejsapp:latest'
+				sh 'docker push myDockerHub/myRepo'
 			}
 		}
 	}
-	##CD
+	//CD
 	post {
 		always {
 			sh 'docker logout'
